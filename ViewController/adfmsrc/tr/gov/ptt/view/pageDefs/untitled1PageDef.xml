@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="untitled1PageDef"
+                Package="tr.gov.ptt.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="KisiTelFacadeBean" id="KisiTelFacadeBeanIterator"/>
+    <accessorIterator MasterBinding="KisiTelFacadeBeanIterator" Binds="kisiFindAll" RangeSize="25"
+                      DataControl="KisiTelFacadeBean" BeanClass="tr.gov.ptt.model.Kisi" id="kisiFindAllIterator"/>
+    <accessorIterator MasterBinding="kisiFindAllIterator" Binds="telefonList" RangeSize="25"
+                      DataControl="KisiTelFacadeBean" BeanClass="tr.gov.ptt.model.Telefon" id="telefonListIterator"/>
+    <searchRegion Binds="telefonListIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="telefonListQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="kisiFindAllIterator" id="ad">
+      <AttrNames>
+        <Item Value="ad"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="kisiFindAllIterator" id="soyad">
+      <AttrNames>
+        <Item Value="soyad"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="kisiFindAllIterator" id="dogtar">
+      <AttrNames>
+        <Item Value="dogtar"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="kisiFindAllIterator" id="maas">
+      <AttrNames>
+        <Item Value="maas"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="kisiFindAllIterator" id="no">
+      <AttrNames>
+        <Item Value="no"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="kisiFindAllIterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="kisiFindAllIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="kisiFindAllIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="kisiFindAllIterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <tree IterBinding="telefonListIterator" id="telefonList">
+      <nodeDefinition DefName="tr.gov.ptt.model.Telefon" Name="telefonList0">
+        <AttrNames>
+          <Item Value="tur"/>
+          <Item Value="telno"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="kisiFindAllIterator" id="Create" RequiresUpdateModel="true" Action="createRow"/>
+  </bindings>
+</pageDefinition>

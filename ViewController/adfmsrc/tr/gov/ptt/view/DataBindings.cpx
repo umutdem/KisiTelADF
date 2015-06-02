@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.10.8" id="DataBindings"
+             SeparateXMLFiles="false" Package="tr.gov.ptt.view" ClientType="Generic">
+  <pageMap>
+    <page path="/untitled1.jsf" usageId="tr_gov_ptt_view_untitled1PageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="tr_gov_ptt_view_untitled1PageDef" path="tr.gov.ptt.view.pageDefs.untitled1PageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="KisiTelFacadeBean" path="tr.gov.ptt.model.KisiTelFacadeBean"/>
+  </dataControlUsages>
+</Application>

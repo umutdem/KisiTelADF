@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="untitled1.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="100%" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <af:decorativeBox theme="dark" id="db1">
+                            <f:facet name="center">
+                                <af:decorativeBox theme="medium" id="db2">
+                                    <f:facet name="center">
+                                        <!-- Content -->
+                                        <af:panelSplitter id="ps1" orientation="vertical">
+                                            <f:facet name="first">
+                                                <af:panelFormLayout id="pfl1">
+                                                    <af:group id="Group">
+                                                        <af:inputText value="#{bindings.ad.inputValue}"
+                                                                      label="#{bindings.ad.hints.label}"
+                                                                      required="#{bindings.ad.hints.mandatory}"
+                                                                      columns="#{bindings.ad.hints.displayWidth}"
+                                                                      maximumLength="#{bindings.ad.hints.precision}"
+                                                                      shortDesc="#{bindings.ad.hints.tooltip}" id="it1">
+                                                            <f:validator binding="#{bindings.ad.validator}"/>
+                                                        </af:inputText>
+                                                        <af:inputText value="#{bindings.soyad.inputValue}"
+                                                                      label="#{bindings.soyad.hints.label}"
+                                                                      required="#{bindings.soyad.hints.mandatory}"
+                                                                      columns="#{bindings.soyad.hints.displayWidth}"
+                                                                      maximumLength="#{bindings.soyad.hints.precision}"
+                                                                      shortDesc="#{bindings.soyad.hints.tooltip}"
+                                                                      id="it2">
+                                                            <f:validator binding="#{bindings.soyad.validator}"/>
+                                                        </af:inputText>
+                                                    </af:group>
+                                                    <af:inputDate value="#{bindings.dogtar.inputValue}"
+                                                                  label="#{bindings.dogtar.hints.label}"
+                                                                  required="#{bindings.dogtar.hints.mandatory}"
+                                                                  columns="#{bindings.dogtar.hints.displayWidth}"
+                                                                  shortDesc="#{bindings.dogtar.hints.tooltip}" id="id1">
+                                                        <f:validator binding="#{bindings.dogtar.validator}"/>
+                                                        <af:convertDateTime pattern="#{bindings.dogtar.format}"/>
+                                                    </af:inputDate>
+                                                    <af:inputText value="#{bindings.maas.inputValue}"
+                                                                  label="#{bindings.maas.hints.label}"
+                                                                  required="#{bindings.maas.hints.mandatory}"
+                                                                  columns="#{bindings.maas.hints.displayWidth}"
+                                                                  maximumLength="#{bindings.maas.hints.precision}"
+                                                                  shortDesc="#{bindings.maas.hints.tooltip}" id="it3">
+                                                        <f:validator binding="#{bindings.maas.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.maas.format}"/>
+                                                    </af:inputText>
+                                                    <af:inputText value="#{bindings.no.inputValue}"
+                                                                  label="#{bindings.no.hints.label}"
+                                                                  required="#{bindings.no.hints.mandatory}"
+                                                                  columns="#{bindings.no.hints.displayWidth}"
+                                                                  maximumLength="#{bindings.no.hints.precision}"
+                                                                  shortDesc="#{bindings.no.hints.tooltip}" id="it4">
+                                                        <f:validator binding="#{bindings.no.validator}"/>
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.no.format}"/>
+                                                    </af:inputText>
+                                                    <f:facet name="footer">
+                                                        <af:panelGroupLayout layout="horizontal" id="pgl2">
+                                                            <af:button actionListener="#{bindings.First.execute}"
+                                                                       text="First"
+                                                                       disabled="#{!bindings.First.enabled}"
+                                                                       partialSubmit="true" id="b1"/>
+                                                            <af:button actionListener="#{bindings.Previous.execute}"
+                                                                       text="Previous"
+                                                                       disabled="#{!bindings.Previous.enabled}"
+                                                                       partialSubmit="true" id="b2"/>
+                                                            <af:button actionListener="#{bindings.Create.execute}"
+                                                                       text="Create"
+                                                                       disabled="#{!bindings.Create.enabled}" id="b5"/>
+                                                            <af:button actionListener="#{bindings.Next.execute}"
+                                                                       text="Next" disabled="#{!bindings.Next.enabled}"
+                                                                       partialSubmit="true" id="b3"/>
+                                                            <af:button actionListener="#{bindings.Last.execute}"
+                                                                       text="Last" disabled="#{!bindings.Last.enabled}"
+                                                                       partialSubmit="true" id="b4"/>
+                                                        </af:panelGroupLayout>
+                                                    </f:facet>
+                                                </af:panelFormLayout>
+                                            </f:facet>
+                                            <f:facet name="second">
+                                                <af:table value="#{bindings.telefonList.collectionModel}" var="row"
+                                                          rows="#{bindings.telefonList.rangeSize}"
+                                                          emptyText="#{bindings.telefonList.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                          rowBandingInterval="0"
+                                                          fetchSize="#{bindings.telefonList.rangeSize}"
+                                                          filterModel="#{bindings.telefonListQuery.queryDescriptor}"
+                                                          queryListener="#{bindings.telefonListQuery.processQuery}"
+                                                          filterVisible="true" varStatus="vs" id="t1">
+                                                    <af:column sortProperty="#{bindings.telefonList.hints.tur.name}"
+                                                               filterable="true" sortable="true"
+                                                               headerText="#{bindings.telefonList.hints.tur.label}"
+                                                               id="c1">
+                                                        <af:outputText value="#{row.tur}"
+                                                                       shortDesc="#{bindings.telefonList.hints.tur.tooltip}"
+                                                                       id="ot1"/>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.telefonList.hints.telno.name}"
+                                                               filterable="true" sortable="true"
+                                                               headerText="#{bindings.telefonList.hints.telno.label}"
+                                                               id="c2">
+                                                        <af:outputText value="#{row.telno}"
+                                                                       shortDesc="#{bindings.telefonList.hints.telno.tooltip}"
+                                                                       id="ot2"/>
+                                                    </af:column>
+                                                </af:table>
+                                            </f:facet>
+                                        </af:panelSplitter>
+                                    </f:facet>
+                                </af:decorativeBox>
+                            </f:facet>
+                        </af:decorativeBox>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+</f:view>
